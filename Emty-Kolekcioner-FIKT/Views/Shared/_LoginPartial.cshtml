@@ -4,15 +4,15 @@
 @if (Session["UserId"] != null)
 {
 
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "LogOut", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
 
 <ul class="nav navbar-nav navbar-right">
     <li>
-
+        <h3>Hello @Session["Username"]</h3>
     </li>
-    @* <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>*@
+    <li><a href="javascript:document.getElementById('LogOut').submit()">Log out</a></li>
 </ul>
     }
 }

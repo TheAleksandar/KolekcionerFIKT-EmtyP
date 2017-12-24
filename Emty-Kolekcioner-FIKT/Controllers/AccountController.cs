@@ -54,7 +54,7 @@ namespace Emty_Kolekcioner_FIKT.Controllers
                 var usr = db.UserAccount.Where(u => u.Username == user.Username && u.Password == user.Password).FirstOrDefault();
                 if (usr != null)
                 {
-                    Session["USerID"] = usr.UserID.ToString();
+                    Session["UserID"] = usr.UserID.ToString();
                     Session["Username"] = usr.Username.ToString();
                     return RedirectToAction("LoggedIn");
                 }
@@ -79,7 +79,17 @@ namespace Emty_Kolekcioner_FIKT.Controllers
             }
         }
 
+        public ActionResult LogOut()
+        
+             {
+
+            Session["UserId"] = null;
+            return RedirectToAction("Index", "Home"); }
+
+
+           
+        }
+
 
 
     }
-}
