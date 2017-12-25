@@ -34,7 +34,7 @@ namespace Emty_Kolekcioner_FIKT.Controllers
                 }
                 ModelState.Clear();
                 ViewBag.Message = account.FirstName + " " + account.LastName + " successfully registered";
-
+                return RedirectToAction("LogedIn");
             }
             return View();
         }
@@ -61,7 +61,7 @@ namespace Emty_Kolekcioner_FIKT.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Username or password is wrong.");
-                    
+
                 }
             }
             return View();
@@ -69,7 +69,7 @@ namespace Emty_Kolekcioner_FIKT.Controllers
 
         public ActionResult LoggedIn()
         {
-            if(Session["UserId"]!=null)
+            if (Session["UserId"] != null)
             {
                 return View();
             }
@@ -80,16 +80,13 @@ namespace Emty_Kolekcioner_FIKT.Controllers
         }
 
         public ActionResult LogOut()
-        
-             {
+
+        {
 
             Session["UserId"] = null;
-            return RedirectToAction("Index", "Home"); }
-
-
-           
+            return RedirectToAction("Index", "Home");
         }
 
-
-
     }
+
+}
