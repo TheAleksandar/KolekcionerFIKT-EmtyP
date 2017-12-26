@@ -6,10 +6,11 @@ using System.Data.Entity;
 
 namespace Emty_Kolekcioner_FIKT.Models
 {
-    public class OurDbContext :DbContext
+    public class OurDbContext : DbContext
     {
-        public  DbSet<UserAccount> UserAccount { get; set; }
-        public  DbSet<AddKolekcion> AddKolekcion { get; set; }
+        public DbSet <UserAccount> UserAccount { get; set; }
+
+        public DbSet <AddKolekcion> AddKolekcion { get; set; }
 
     }
 }
