@@ -51,7 +51,7 @@ namespace Emty_Kolekcioner_FIKT.Controllers
         {
             using (OurDbContext db = new OurDbContext())
             {
-                var usr = db.UserAccount.Where(u => u.Username == user.Username && u.Password == user.Password).FirstOrDefault();
+                var usr = db.UserAccount.FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password);
                 if (usr != null)
                 {
                     Session["UserID"] = usr.UserID.ToString();
@@ -86,6 +86,37 @@ namespace Emty_Kolekcioner_FIKT.Controllers
             Session["UserId"] = null;
             return RedirectToAction("Index", "Home");
         }
+
+        //Kollekcija
+        public ActionResult NewPhoto()
+        {
+            if (Session["UserId"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+        [HttpPost]
+        public ActionResult NewPhoto(AddKolekcion kolekcija)
+        {
+            if (ModelState.IsValid)
+            {
+                using (OurDbContext db = new OurDbContext())
+                {
+                    db.AddKolekcion.Add(kolekcija);
+                    db.SaveChanges();
+                }
+                ModelState.Clear();
+            }
+            return View();
+        }
+
+
+
+
 
     }
 

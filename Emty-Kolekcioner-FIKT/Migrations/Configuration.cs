@@ -10,7 +10,6 @@ namespace Emty_Kolekcioner_FIKT.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Emty_Kolekcioner_FIKT.Models.OurDbContext";
         }
 
         protected override void Seed(Emty_Kolekcioner_FIKT.Models.OurDbContext context)

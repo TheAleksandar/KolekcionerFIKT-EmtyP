@@ -17,7 +17,14 @@ namespace Emty_Kolekcioner_FIKT.Controllers
 
         public ActionResult NewPhoto()
         {
-            return View();
+            if (Session["UserId"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
         [HttpPost]
         public ActionResult NewPhoto(AddKolekcion kolekcija)

@@ -13,7 +13,7 @@ namespace Emty_Kolekcioner_FIKT.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201712262209055_v1"; }
+            get { return "201712262300538_v1"; }
         }
         
         string IMigrationMetadata.Source
