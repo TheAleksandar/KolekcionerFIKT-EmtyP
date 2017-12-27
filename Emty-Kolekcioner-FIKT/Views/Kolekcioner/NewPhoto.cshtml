@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Emty_Kolekcioner_FIKT.Models.AddKolekcion>
+
+@{
+    ViewBag.Title = "NewPhoto";
+}
+
+<h2>NewPhoto</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhotoBr)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhotoBr)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDphoto }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDphoto }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDphoto })
+        </td>
+    </tr>
+}
+
+</table>

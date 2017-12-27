@@ -14,6 +14,7 @@ namespace Emty_Kolekcioner_FIKT.Models
         
         public int IdUser { get; set; }
 
+
         [Required(ErrorMessage = "Last Name is required.")]
         public int PhotoBr { get; set; }
 

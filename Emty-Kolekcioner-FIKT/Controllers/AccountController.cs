@@ -25,6 +25,7 @@ namespace Emty_Kolekcioner_FIKT.Controllers
         [HttpPost]
         public ActionResult Register(UserAccount account)
         {
+           
             if (ModelState.IsValid)
             {
                 using (OurDbContext db = new OurDbContext())
@@ -86,12 +87,28 @@ namespace Emty_Kolekcioner_FIKT.Controllers
             Session["UserId"] = null;
             return RedirectToAction("Index", "Home");
         }
-
-        //Kollekcija
-        public ActionResult NewPhoto()
+        //my stickers
+        public ActionResult Mystickers()
         {
             if (Session["UserId"] != null)
             {
+                Session["IdUser"] = Session["UserId"];
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+            //Kollekcija
+            public ActionResult NewPhoto()
+        {
+            if (Session["UserId"] != null)
+            {
+                Session["IdUser"] = Session["UserId"];
+
                 return View();
             }
             else
@@ -102,19 +119,38 @@ namespace Emty_Kolekcioner_FIKT.Controllers
         [HttpPost]
         public ActionResult NewPhoto(AddKolekcion kolekcija)
         {
-            if (ModelState.IsValid)
+            using (OurDbContext db = new OurDbContext())
             {
-                using (OurDbContext db = new OurDbContext())
-                {
-                    db.AddKolekcion.Add(kolekcija);
-                    db.SaveChanges();
-                }
-                ModelState.Clear();
+                 
+                  
+                    if (ModelState.IsValid)
+                    {
+                        {
+                            db.AddKolekcion.Add(kolekcija);
+                            db.SaveChanges();
+                        }
+                        ModelState.Clear();
+                    }
+                    return View();
+                
+            
+              
+
             }
-            return View();
+
+
         }
 
 
+
+
+
+
+
+           
+   
+
+   
 
 
 

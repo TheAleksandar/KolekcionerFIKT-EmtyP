@@ -34,6 +34,7 @@ namespace Emty_Kolekcioner_FIKT.Models
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
 
-     
+
+
     }
 }
